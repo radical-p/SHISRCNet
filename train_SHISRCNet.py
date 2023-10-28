@@ -128,8 +128,8 @@ for epoch in range(start_epoch,num_epochs):
     #print(epoch ,param_group['lr'])
    
     net.train()
-    loss_ave = torch.zeros(1).squeeze().cuda()
-    loss_ave_re = torch.zeros(1).squeeze().cuda()
+    loss_ave = torch.zeros(1).squeeze()#.cuda()
+    loss_ave_re = torch.zeros(1).squeeze()#.cuda()
     for i,dataset in enumerate(loader):
         
         batchLR,batchHR,batchLabel = dataset
