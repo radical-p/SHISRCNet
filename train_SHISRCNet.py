@@ -82,8 +82,8 @@ optimizer = optim.Adam(net.parameters(), lr=lr)  ########优化器采用Adam，�
 
 
 ###SR
-Train_list = np.loadtxt("/kaggle/working/SHISRCNet/HR_groudtruth_train_classification_2.txt", dtype=str, delimiter='  ')[1:]
-Test_list = np.loadtxt("/kaggle/working/SHISRCNet/HR_groudtruth_test_classification_2.txt", dtype=str, delimiter='  ')#[:20]
+Train_list = np.genfromtxt("/kaggle/working/SHISRCNet/HR_groudtruth_train_classification_2.txt", dtype=str, delimiter='  ')[1:]
+Test_list = np.genfromtxt("/kaggle/working/SHISRCNet/HR_groudtruth_test_classification_2.txt", dtype=str, delimiter='  ')#[:20]
 Train_list = Train_list#[:10]
 Test_list = Test_list#[:10]
 print(Train_list.shape,Test_list.shape)
