@@ -82,8 +82,8 @@ optimizer = optim.Adam(net.parameters(), lr=lr)  ########优化器采用Adam，�
 
 
 ###SR
-Train_list = np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_train_classification_2.txt", dtype=str, delimiter='  ')[1:]
-Test_list = np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_2.txt", dtype=str, delimiter='  ')#[:20]
+Train_list = np.loadtxt("/kaggle/working/SHISRCNet/HR_groudtruth_train_classification_2.txt", dtype=str, delimiter='  ')[1:]
+Test_list = np.loadtxt("/kaggle/working/SHISRCNet/HR_groudtruth_test_classification_2.txt", dtype=str, delimiter='  ')#[:20]
 Train_list = Train_list#[:10]
 Test_list = Test_list#[:10]
 print(Train_list.shape,Test_list.shape)
@@ -92,6 +92,7 @@ loader = Data.DataLoader(dataset = torch_dataset, batch_size = batch_size, shuff
 torch_dataset_test = dl.SPDataSet(Test_list)
 loader_test = Data.DataLoader(dataset = torch_dataset_test, batch_size = 1, shuffle = True,num_workers = 4,pin_memory=True,) 
 
+'''
 ##class
 Test_list_40X = np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_40X.txt", dtype=str, delimiter='  ')#[:10]
 torch_dataset_test_40X = dl.SPDataSet(Test_list_40X)
@@ -109,7 +110,7 @@ loader_test_200X = Data.DataLoader(dataset = torch_dataset_test_200X, batch_size
 Test_list_400X= np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_400X.txt", dtype=str, delimiter='  ')#[:10]
 torch_dataset_test_400X = dl.SPDataSet(Test_list_400X)
 loader_test_400X = Data.DataLoader(dataset = torch_dataset_test_400X, batch_size = 10, shuffle = True,num_workers = 8,pin_memory=True,) 
-
+'''
 
 all_time = 0          #####一共所用时间
 num_epochs = 1000  #######训练轮数
@@ -177,7 +178,7 @@ for epoch in range(start_epoch,num_epochs):
         
         
         
-        
+        '''
         running_corrects_test = torch.zeros(1).squeeze().cuda()      
         for i,dataset in enumerate(loader_test_40X):
             
@@ -232,4 +233,4 @@ for epoch in range(start_epoch,num_epochs):
             #print(torch.sum(prediction == target))
         print('\r','X400ACC:{:.6f}'.format(running_corrects_test/(len(Test_list_400X))),end='')  
         print("         ")  
-        
+        '''
