@@ -92,25 +92,24 @@ loader = Data.DataLoader(dataset = torch_dataset, batch_size = batch_size, shuff
 torch_dataset_test = dl.SPDataSet(Test_list)
 loader_test = Data.DataLoader(dataset = torch_dataset_test, batch_size = 1, shuffle = True,num_workers = 4,pin_memory=True,) 
 
-'''
+
 ##class
-Test_list_40X = np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_40X.txt", dtype=str, delimiter='  ')#[:10]
+Test_list_40X = np.genfromtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_40X.txt", dtype=str, delimiter='  ')#[:10]
 torch_dataset_test_40X = dl.SPDataSet(Test_list_40X)
 loader_test_40X = Data.DataLoader(dataset = torch_dataset_test_40X, batch_size = 10, shuffle = True,num_workers = 8,pin_memory=True,) 
 
-Test_list_100X = np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_100X.txt", dtype=str, delimiter='  ')#[:10]
+Test_list_100X = np.genfromtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_100X.txt", dtype=str, delimiter='  ')#[:10]
 torch_dataset_test_100X = dl.SPDataSet(Test_list_100X)
 loader_test_100X = Data.DataLoader(dataset = torch_dataset_test_100X, batch_size = 10, shuffle = True,num_workers = 8,pin_memory=True,) 
 
-Test_list_200X = np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_200X.txt", dtype=str, delimiter='  ')#[:10]
+Test_list_200X = np.genfromtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_200X.txt", dtype=str, delimiter='  ')#[:10]
 torch_dataset_test_200X = dl.SPDataSet(Test_list_200X)
 loader_test_200X = Data.DataLoader(dataset = torch_dataset_test_200X, batch_size = 10, shuffle = True,num_workers = 8,pin_memory=True,) 
 
 
-Test_list_400X= np.loadtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_400X.txt", dtype=str, delimiter='  ')#[:10]
+Test_list_400X= np.genfromtxt("/home/xly/SR_classification/classification/HR_groudtruth_test_classification_400X.txt", dtype=str, delimiter='  ')#[:10]
 torch_dataset_test_400X = dl.SPDataSet(Test_list_400X)
 loader_test_400X = Data.DataLoader(dataset = torch_dataset_test_400X, batch_size = 10, shuffle = True,num_workers = 8,pin_memory=True,) 
-'''
 
 all_time = 0          #####一共所用时间
 num_epochs = 1000  #######训练轮数
@@ -178,7 +177,6 @@ for epoch in range(start_epoch,num_epochs):
         
         
         
-        '''
         running_corrects_test = torch.zeros(1).squeeze().cuda()      
         for i,dataset in enumerate(loader_test_40X):
             
@@ -233,4 +231,4 @@ for epoch in range(start_epoch,num_epochs):
             #print(torch.sum(prediction == target))
         print('\r','X400ACC:{:.6f}'.format(running_corrects_test/(len(Test_list_400X))),end='')  
         print("         ")  
-        '''
+        
